@@ -81,7 +81,8 @@ public class GenerationManager : MonoBehaviour
             PathBox spawnedBox = Instantiate(prefabDB.prefabList[0], pathGroup).GetComponent<PathBox>();
             PathBox previousBox = pathBoxes[pathBoxes.Count-1];
             Vector2 spawnPos = new Vector2(0, 0);
-            
+
+            //aa
             switch (spawnSide)
             {
                 case 0:
