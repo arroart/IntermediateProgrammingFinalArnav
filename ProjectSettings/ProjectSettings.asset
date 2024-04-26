@@ -4,7 +4,7 @@
 PlayerSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 26
-  productGUID: 44f637d4b30b2437ab6fa3ba8b65d7e2
+  productGUID: 4b76e076e18f64a5b86e574c5aa4b5cc
   AndroidProfiler: 0
   AndroidFilterTouchesWhenObscured: 0
   AndroidEnableSustainedPerformanceMode: 0
@@ -13,7 +13,7 @@ PlayerSettings:
   useOnDemandResources: 0
   accelerometerFrequency: 60
   companyName: DefaultCompany
-  productName: IntermediateProgrammingFinalArnav
+  productName: IntermediateProgrammingMidtermGame
   defaultCursor: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}
   m_SplashScreenBackgroundColor: {r: 0.13725491, g: 0.12156863, b: 0.1254902, a: 1}
@@ -676,14 +676,14 @@ PlayerSettings:
   apiCompatibilityLevelPerPlatform: {}
   m_RenderingPath: 1
   m_MobileRenderingPath: 1
-  metroPackageName: IntermediateProgrammingFinalArnav
+  metroPackageName: IntermediateProgrammingMidtermGame
   metroPackageVersion: 
   metroCertificatePath: 
   metroCertificatePassword: 
   metroCertificateSubject: 
   metroCertificateIssuer: 
   metroCertificateNotAfter: 0000000000000000
-  metroApplicationDescription: IntermediateProgrammingFinalArnav
+  metroApplicationDescription: IntermediateProgrammingMidtermGame
   wsaImages: {}
   metroTileShortName: 
   metroTileShowName: 0
@@ -752,10 +752,10 @@ PlayerSettings:
   apiCompatibilityLevel: 6
   activeInputHandler: 0
   windowsGamepadBackendHint: 0
-  cloudProjectId: 5e42c65a-ec28-44a9-b667-91401bbab1d5
+  cloudProjectId: a7d36aaa-e39a-4ebf-bbee-3faddd1c2f76
   framebufferDepthMemorylessMode: 0
   qualitySettingsNames: []
-  projectName: IntermediateProgrammingFinalArnav
+  projectName: IntermediateProgrammingMidtermGame
   organizationId: arnavarora2016
   cloudEnabled: 0
   legacyClampBlendShapeWeights: 0
