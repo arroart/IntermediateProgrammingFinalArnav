@@ -79,4 +79,13 @@ public class PlayerMove : MonoBehaviour
         myCh.Move(velocity * Time.deltaTime);
 
     }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag == "SpawnPad")
+        {
+            Debug.Log("aa");
+            GameManager.gm.SpawnEnemy();
+        }
+    }
 }

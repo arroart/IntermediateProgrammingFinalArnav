@@ -9,12 +9,16 @@ public class PathBox : MonoBehaviour
 
     public float mazeSize = 5;
     public GameObject[] walls;
+
+    public GameObject[] obstacles;
     [HideInInspector]
     public int locX;
     [HideInInspector]
     public int locY;
 
     Vector3 pPosition;
+
+    public GameObject highLava;
 
    
     public GameObject genTrigger;

@@ -19,6 +19,8 @@ public class GenerationTrigger : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         GenerationManager._instance.GeneratePath(GenerationManager._instance.pathBoxes[GenerationManager._instance.pathBoxes.Count-1]);
+        //GenerationManager._instance.RemoveBoxes(5);
+
         gameObject.active = false;
     }
 }
