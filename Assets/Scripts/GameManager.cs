@@ -105,11 +105,13 @@ public class GameManager : MonoBehaviour
             gameCount++;
             
 
-            if (gameCount > 20 && gameCount % 20 == 0)
+            if (gameCount > 5 && gameCount % 5 == 0)
             {
                 if (enemy != null)
                 {
                     enemy.GetComponent<EnemyFollow>().IncreaseSpeed(0.02f);
+
+                    player.GetComponent<PlayerMove>().moveSpeed += 0.2f;
                 }
 
 
@@ -121,6 +123,6 @@ public class GameManager : MonoBehaviour
 
     public void SceneLoad()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        SceneManager.LoadScene("Screen");
     }
 }

@@ -183,7 +183,8 @@ public class GenerationManager : MonoBehaviour
                 int randomWall = Random.Range(0, 7);
                 if (randomWall < 4)
                 {
-                    spawnedBox.walls[randomWall].active = false;
+                    spawnedBox.walls[randomWall].transform.position = new Vector3(spawnedBox.walls[randomWall].transform.position.x, spawnedBox.walls[randomWall].transform.position.y - 2f - 1f, spawnedBox.walls[randomWall].transform.position.z);
+                    spawnedBox.walls[randomWall].GetComponent<BoxCollider>().isTrigger = true;
                 }
 
                 if (randomWall == 5)
@@ -219,8 +220,10 @@ public class GenerationManager : MonoBehaviour
             }
             
             
+            
+            Invoke("BuildNav",1f);
 
-            BuildNav();
+
         }
             
     }
@@ -239,8 +242,8 @@ public class GenerationManager : MonoBehaviour
 
     public void RemoveBoxes(int boxCount)
     {
-        //GameManager.gm.enemy.transform.position = new Vector3(pathBoxes[pathBoxes.Count - 8].Position.x, 2, pathBoxes[pathBoxes.Count - 8].Position.z);
 
+        GameManager.gm.enemy.transform.position = new Vector3(pathBoxes[pathBoxes.Count - 8].Position.x, 1, pathBoxes[pathBoxes.Count - boxCount].Position.z);
         for (int i = 0; i < boxCount; i++)
         {
             PathBox boxRemoved = pathBoxes[0];
@@ -270,6 +273,8 @@ public class GenerationManager : MonoBehaviour
 
             //    }
             //}
+
+
             Destroy(boxRemoved.gameObject);
         }
 

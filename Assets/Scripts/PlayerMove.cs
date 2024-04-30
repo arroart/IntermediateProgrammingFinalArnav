@@ -6,7 +6,7 @@ public class PlayerMove : MonoBehaviour
 {
     public bool turnRight, turnLeft;
     [SerializeField]
-    float moveSpeed;
+    public float moveSpeed;
     
 
     float ySpeed;
