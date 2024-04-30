@@ -7,6 +7,7 @@ public class PlayerMove : MonoBehaviour
     public bool turnRight, turnLeft;
     [SerializeField]
     float moveSpeed;
+    
 
     float ySpeed;
     float originalStep;
@@ -18,6 +19,8 @@ public class PlayerMove : MonoBehaviour
     CharacterController myCh;
 
     Transform playerBody;
+
+    bool jumpForce;
     
 
     // Start is called before the first frame update
@@ -66,6 +69,11 @@ public class PlayerMove : MonoBehaviour
             {
                 ySpeed = jumpSpeed;
             }
+            if (jumpForce)
+            {
+                jumpForce = false;
+                ySpeed = jumpSpeed*Random.Range(1f,2f);
+            }
         }
         else
         {
@@ -78,14 +86,19 @@ public class PlayerMove : MonoBehaviour
         velocity.y = ySpeed;
         myCh.Move(velocity * Time.deltaTime);
 
+        
+
+
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider other)
     {
-        if (collision.gameObject.tag == "SpawnPad")
+        if (other.gameObject.transform.tag == "MoveObstacle")
         {
-            Debug.Log("aa");
-            GameManager.gm.SpawnEnemy();
+            
+            jumpForce = true;
         }
     }
+
+
 }

@@ -11,10 +11,10 @@ GameObject:
   - component: {fileID: 5320028582837156058}
   - component: {fileID: 880720826342325684}
   - component: {fileID: 944430491761003478}
-  - component: {fileID: 257408481845470205}
   - component: {fileID: 6127796394395211734}
   - component: {fileID: 4550784911962514262}
   - component: {fileID: 3009601117207725196}
+  - component: {fileID: 7286152849587564974}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -88,27 +88,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &257408481845470205
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9117568296987209273}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!54 &6127796394395211734
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -171,6 +150,29 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyMesh: {fileID: 4550784911962514262}
+--- !u!136 &7286152849587564974
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9117568296987209273}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Height: 4
+  m_Direction: 1
+  m_Center: {x: 0, y: 2, z: 0}
 --- !u!1001 &501139837846749087
 PrefabInstance:
   m_ObjectHideFlags: 0

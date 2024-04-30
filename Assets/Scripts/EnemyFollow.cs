@@ -24,6 +24,7 @@ public class EnemyFollow : MonoBehaviour
             enemyMesh.SetDestination(GameManager.gm.player.transform.position);
         }
 
+        
     }
 
     public void IncreaseSpeed(float a)
@@ -32,6 +33,15 @@ public class EnemyFollow : MonoBehaviour
         {
             enemyMesh.speed += a;
         }
-        
+
+        Debug.Log(enemyMesh.speed);
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "PlayerP")
+        {
+            GameManager.gm.SceneLoad();
+        }
     }
 }

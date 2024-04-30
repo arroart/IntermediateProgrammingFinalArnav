@@ -17,11 +17,12 @@ public class PathBox : MonoBehaviour
     public int locY;
 
     Vector3 pPosition;
-
-    public GameObject highLava;
-
    
     public GameObject genTrigger;
+
+    public GameObject bounceBall;
+
+    public GameObject coinOb;
 
     public Vector3 Position
     {
@@ -42,4 +43,5 @@ public class PathBox : MonoBehaviour
         locX = x;
         locY = y;
     }
+
 }

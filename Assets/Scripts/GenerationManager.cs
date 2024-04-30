@@ -22,6 +22,8 @@ public class GenerationManager : MonoBehaviour
     //PathBox[] addedGen;
 
     List<Vector2> logPos = new List<Vector2>();
+
+   
     
     // Start is called before the first frame update
     private void Awake()
@@ -76,13 +78,13 @@ public class GenerationManager : MonoBehaviour
             logPos.Add(new Vector2(0, i));
         }
         
-        GeneratePath(pathBoxes[pathBoxes.Count-1]);
+        GeneratePath(20,0);
     }
 
-    public void GeneratePath(PathBox baseBox)
+    public void GeneratePath(int boxCount, int remCount)
     {
         
-        if (currentGcount < 20)
+        if (currentGcount < boxCount)
         {
             //addedGen[currentGcount] = baseBox;
             int spawnSide = Random.Range(0, 4);
@@ -155,38 +157,52 @@ public class GenerationManager : MonoBehaviour
 
             }
 
-            int randomChance = Random.Range(0, 10);
-            if (randomChance < 4)
-            {
-                int randomObstacles = Random.Range(0, 3);
-                spawnedBox.obstacles[randomObstacles].active = true;
-
-                spawnedBox.obstacles[randomObstacles].transform.rotation = Quaternion.Euler(0, 90 * randomChance, 0);
-            }
-
-            int randomWall= Random.Range(0, 8);
-            if (randomWall < 4)
-            {
-                spawnedBox.walls[randomWall].active = false;
-            }
-
-            if (randomWall == 7)
-            {
-                spawnedBox.highLava.active = true;
-            }
+            
 
             if (LogExists(spawnPos))
             {
                 Destroy(spawnedBox.gameObject);
-                GeneratePath(pathBoxes[pathBoxes.Count-1]);
+                GeneratePath(boxCount, remCount);
             }
             else
             {
+
+                int randomChance = Random.Range(0, 9);
+                if (randomChance < 3)
+                {
+
+                    spawnedBox.obstacles[randomChance].active = true;
+
+                    spawnedBox.obstacles[randomChance].transform.rotation = Quaternion.Euler(0, 90 * randomChance, 0);
+                }
+                if (randomChance % 3 == 0)
+                {
+                    spawnedBox.coinOb.active = true;
+                }
+
+                int randomWall = Random.Range(0, 7);
+                if (randomWall < 4)
+                {
+                    spawnedBox.walls[randomWall].active = false;
+                }
+
+                if (randomWall == 5)
+                {
+                    if (!previousBox.bounceBall.active)
+                    {
+                        spawnedBox.bounceBall.active = true;
+
+                        spawnedBox.bounceBall.transform.localScale = spawnedBox.bounceBall.transform.localScale * Random.Range(0.8f, 1.2f);
+                    }
+
+                }
+
+                
                 spawnedBox.Init((int)spawnPos.x, (int)spawnPos.y);
                 logPos.Add(spawnPos);
                 pathBoxes.Add(spawnedBox);
                 currentGcount++;
-                GeneratePath(spawnedBox);
+                GeneratePath(boxCount, remCount);
             }
 
             
@@ -195,7 +211,14 @@ public class GenerationManager : MonoBehaviour
         else
         {
             currentGcount = 0;
-            pathBoxes[pathBoxes.Count - 8].genTrigger.active = true;
+            pathBoxes[pathBoxes.Count - (int)boxCount / 2].genTrigger.active = true;
+
+            if (remCount != 0)
+            {
+                RemoveBoxes((int)boxCount);
+            }
+            
+            
 
             BuildNav();
         }
@@ -216,37 +239,42 @@ public class GenerationManager : MonoBehaviour
 
     public void RemoveBoxes(int boxCount)
     {
-        for(int i=0; i < boxCount; i++)
+        //GameManager.gm.enemy.transform.position = new Vector3(pathBoxes[pathBoxes.Count - 8].Position.x, 2, pathBoxes[pathBoxes.Count - 8].Position.z);
+
+        for (int i = 0; i < boxCount; i++)
         {
             PathBox boxRemoved = pathBoxes[0];
             pathBoxes.Remove(boxRemoved);
             logPos.Remove(new Vector2(boxRemoved.locX, boxRemoved.locY));
 
-            if (i == boxCount - 1)
-            {
-                for(int j=0;j< boxRemoved.walls.Length; j++)
-                {
-                    if(j== boxRemoved.walls.Length - 1)
-                    {
-                        if (!boxRemoved.walls[j].active && !pathBoxes[0].walls[0].active)
-                        {
-                            pathBoxes[0].walls[0].active = true;
-                            break;
-                        }
-                    }
-                    else
-                    {
-                        if (!boxRemoved.walls[j].active && !pathBoxes[0].walls[j + 1].active)
-                        {
-                            pathBoxes[0].walls[j + 1].active=true;
-                            break;
-                        }
-                    }
-                    
-                }
-            }
+            //if (i == boxCount - 1)
+            //{
+            //    for (int j = 0; j < boxRemoved.walls.Length; j++)
+            //    {
+            //        if (j == boxRemoved.walls.Length - 1)
+            //        {
+            //            if (!boxRemoved.walls[j].active && !pathBoxes[0].walls[0].active)
+            //            {
+            //                pathBoxes[0].walls[0].active = true;
+            //                break;
+            //            }
+            //        }
+            //        else
+            //        {
+            //            if (!boxRemoved.walls[j].active && !pathBoxes[0].walls[j + 1].active)
+            //            {
+            //                pathBoxes[0].walls[j + 1].active = true;
+            //                break;
+            //            }
+            //        }
+
+            //    }
+            //}
             Destroy(boxRemoved.gameObject);
         }
+
+        
+        
     }
 
     public void BuildNav()

@@ -23,6 +23,8 @@ public class PlayerMovement : MonoBehaviour
 
     int laneIn;
 
+    bool jumpForce;
+
     [SerializeField]
     float distanceMove = 10f;
     
@@ -57,6 +59,12 @@ public class PlayerMovement : MonoBehaviour
                 {
                     ySpeed = jumpSpeed;
                 }
+
+            if (jumpForce)
+            {
+                jumpForce = false;
+                ySpeed = jumpSpeed*10;
+            }
             }
             else
             {
@@ -99,5 +107,16 @@ public class PlayerMovement : MonoBehaviour
         //}
     }
 
-    
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.transform.tag == "MoveObstacle")
+        {
+            Debug.Log("aa");
+            jumpForce = true;
+        }
+       
+           
+       
+    }
+
 }
